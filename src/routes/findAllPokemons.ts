@@ -7,7 +7,7 @@ var { success } = require('../helper');
    * @swagger
    * /api/pokemons:
    *   get:
-   *     summary: Return the entire Pokemon list or a single one with corresponding to the name passed in query parameter
+   *     summary: Return the entire Pokemon list or a single one corresponding partially to the name passed in query parameter
    *     description: Returns a Pokemons list
    *     tags:
    *      - Pokemons
@@ -17,7 +17,7 @@ var { success } = require('../helper');
    *       - in: query
    *         name: name
    *         required: false
-   *         description: Full and exact name of the pokemon to retrieve.
+   *         description: Part of the name of the pokemon to retrieve.
    *         type: string
    *     responses:
    *       '200':
@@ -68,12 +68,12 @@ module.exports = (app:Application) => {
             .then((data:Pokemon[]) => {
                 let ret:Pokemon[]|undefined = data;
                 if (req.query.name) { 
-                    ret = data.filter((p:Pokemon) => p.name == req.query.name ); 
+                    ret = data.filter((p:Pokemon) => p.name.toLowerCase().indexOf((req.query.name as string).toLowerCase(), 0) > -1 ); 
                     if (ret.length == 0) {
                         message = 'Il n\'y a pas de Pokemon qui corresponde à ce nom';
                     }
                     else {
-                        message = 'Voici le pokemon qui nommé ' + req.query.name;
+                        message = 'Voici les pokemons correspondants à ' + req.query.name;
                     }
                 }
                 res.status(200).json(success(message, ret));
