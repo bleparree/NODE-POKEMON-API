@@ -1,4 +1,4 @@
-const {Client} = require('pg');
+import { Client } from 'pg';
 
 /** PostGre Database Initizator and accessor */
 export class PostgreDbAccessors { 

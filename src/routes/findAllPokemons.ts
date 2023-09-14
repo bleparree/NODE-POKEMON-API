@@ -1,7 +1,7 @@
 import { Application, Request, Response } from "express";
 import { PokemonService } from "../services/pokemonService";
 import { Pokemon } from "../models/pokemon";
-var { success } = require('../helper');
+import { success } from '../helper';
 
   /**
    * @swagger
@@ -59,7 +59,7 @@ var { success } = require('../helper');
    *                   description: Auth error
    *                   $ref: '#/definitions/AuthError'
    */
-module.exports = (app:Application) => {
+export function routeFindAllPokemon(app:Application) {
     app.get('/api/pokemons', (req:Request, res:Response) => {
         let message = `Hello, vous avez le pokedex !!! le voici !`;
         let pokemonService = new PokemonService();

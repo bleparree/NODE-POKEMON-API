@@ -1,5 +1,5 @@
 import { Pokemon } from "../models/pokemon";
-var { cacheService } = require('./constExportModule');
+import { cacheService } from "./constExportModule";
 
 /** Pokemon Service => All DB Call to get / add / update / delete a pokemon */
 export class PokemonService{

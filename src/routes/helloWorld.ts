@@ -18,7 +18,7 @@ import { Application, Request, Response } from "express"
  *               example: HelloWorld 
  *   
  */  
-module.exports = (app:Application) => {
+export function routeHelloWorld(app:Application) {
     app.get('/', (req:Request, res:Response) => {
         res.status(200).send('Hello World !')
     })

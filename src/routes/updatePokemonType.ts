@@ -1,7 +1,7 @@
 import { Application, Request, Response } from "express";
 import { PokemonTypeService } from "../services/pokemonTypeService";
 import { PokemonType } from "../models/pokemonType";
-let { success } = require('../helper');
+import { success } from '../helper';
 
   /**
    * @swagger
@@ -66,7 +66,7 @@ let { success } = require('../helper');
    *                   description: Auth error
    *                   $ref: '#/definitions/AuthError'
    */
-module.exports = (app:Application) => {
+export function routeUpdatePokemonType(app:Application) {
     app.put('/api/pokemontype/:id', (req:Request, res:Response) => {
         var pokemonService = new PokemonTypeService();
         var updatePokemon = new PokemonType();

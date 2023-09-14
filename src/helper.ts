@@ -1,4 +1,4 @@
 /**API return format */
-exports.success = (message:any, data:any) => {
+export function success(message:any, data:any) {
     return { message, data }
 }

@@ -1,6 +1,6 @@
 import { Application, Request, Response } from "express";
 import { PokemonTypeService } from "../services/pokemonTypeService";
-var { success } = require('../helper');
+import { success } from '../helper';
 
   /**
    * @swagger
@@ -55,7 +55,7 @@ var { success } = require('../helper');
    *                   description: Auth error
    *                   $ref: '#/definitions/AuthError'
    */
-module.exports = (app:Application) => {
+export function routeDeletePokemonType(app:Application) {
     app.delete('/api/pokemontype/:id', (req:Request, res:Response) => {
         var pokemonTypeService = new PokemonTypeService();
         pokemonTypeService.deleteTypeByid(Number(req.params.id))

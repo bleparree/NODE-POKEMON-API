@@ -2,9 +2,8 @@ import { Application, Request, Response } from "express"
 import bcrypt from 'bcrypt';
 import jwt from "jsonwebtoken";
 
-const privateKey = require('../auth/private_key')
-
-var { cacheService } = require('../services/constExportModule');
+import { privateKey } from "../auth/private_key";
+import { cacheService } from "../services/constExportModule";
 
   /**
    * @swagger
@@ -51,7 +50,7 @@ var { cacheService } = require('../services/constExportModule');
    *                   description: No data/information
    *                   type: string
    */
-module.exports = (app:Application) => {
+  export function routeLogin(app:Application) {
     app.post('/api/login', (req:Request, res:Response) => {
         console.log(req.query.password);
         let pass:string = (req.query.password ? req.query.password.toString() : '');

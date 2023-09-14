@@ -1,6 +1,6 @@
 import { Application, NextFunction, Request, Response } from "express";
 import jwt from 'jsonwebtoken'
-const privateKey = require('../auth/private_key');
+import { privateKey } from "../auth/private_key";
 
 /**
  * @swagger
@@ -37,7 +37,7 @@ const privateKey = require('../auth/private_key');
  */
 
 /** Authentification Middleware checking the auth otken */
-module.exports = (app:Application) => {
+export function middlewareAuth(app:Application){
     app.use('/api/*', (req:Request, res:Response, next:NextFunction) => {
         if (req.baseUrl.endsWith('/login')) {
             return next();
