@@ -52,7 +52,6 @@ import { cacheService } from "../services/constExportModule";
    */
   export function routeLogin(app:Application) {
     app.post('/api/login', (req:Request, res:Response) => {
-        console.log(req.query.password);
         let pass:string = (req.query.password ? req.query.password.toString() : '');
         bcrypt.compare(pass, cacheService.user.password).then(validity => {
             if (validity && req.query.username === cacheService.user.username) {
@@ -61,7 +60,7 @@ import { cacheService } from "../services/constExportModule";
                 return res.json({ message:'L\'utilisateur a été connecté avec succès', token })
             }
             else {
-                return res.status(401).send({ message:'Identifiant incorrect', data: '' })
+                return res.status(401).send({ message:'Identifiant incorrect', token: '' })
             }
         });
     });

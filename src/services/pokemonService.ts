@@ -71,7 +71,7 @@ export class PokemonService{
      * @param _id Pokemon Id to delete
      * @returns True if succeeded
      */
-    deletePokemonByid(_id:Number):Promise<boolean> {
+    deletePokemonByid(_id:number):Promise<boolean> {
         let query:string = `select pokemon.deletepokemon(${_id})`;
         return new Promise((resolve, reject) => {
             cacheService.postgreDbAccessors.getClient().query(query, (err:any, data:any) => {
