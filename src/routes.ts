@@ -42,7 +42,7 @@ export function routes(app:any) {
     app.use(cors(options));
     app.use('/api-docs',swaggerUI.serve,swaggerUI.setup(swaggerDocs));  
     middlewareAuth(app);
-    // middlewareCheckId(app);
+    middlewareCheckId(app);
     routeHelloWorld(app);
     routeLogin(app);
     routeAddPokemon(app);

@@ -62,9 +62,9 @@ export function routePokemonById(app:Application) {
         let pokemonService = new PokemonService();
         pokemonService.getPokemonById(Number(req.params.id))
             .then((data:any) => {
-                let spok:Pokemon = data.rows[0];
+                let spok:Pokemon = data;
                 let message = `Hello, vous avez demandé le pokemon n°${req.params.id} qui est ${spok?.name}`;
-                res.status(200).json(success(message, data.rows));
+                res.status(200).json(success(message, spok));
             })
             .catch((err:any) => {
                 console.log(err.message);

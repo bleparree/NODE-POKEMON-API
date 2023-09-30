@@ -29,7 +29,7 @@ export class PokemonService{
         return new Promise((resolve, reject) => {
             cacheService.postgreDbAccessors.getClient().query(query, (err:any, data:any) => {
                 if (err) return reject(err)
-                resolve(data)
+                resolve(data.rows[0])
             })
         })
     }
